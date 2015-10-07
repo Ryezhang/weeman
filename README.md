@@ -3,6 +3,7 @@ Weeman - http server for phishing
 
 ### This is a python 3.x branch it will update every new version.
 ### Please! DO NOT send pull requests to this branch.
+### Make your changes only in the master branch!
 
 DISCLAIMER
 ==========
