@@ -1,15 +1,8 @@
 Weeman - http server for phishing
 =================================
 
-TODO
------
-
-* Phishing modules. (modules/)
-* Support for more web sites.
-* Code cleanup.
-* Instructions for more platforms.
-* bash scripts for ettercap/dsniff (tools/)
-
+### This is a python 3.x branch it will update every new version.
+### Please! DO NOT send pull requests to this branch.
 
 DISCLAIMER
 ==========
@@ -37,8 +30,8 @@ Weeman will do the following steps:
 Requirements
 ============
 
-* Python <= 2.7.
-* Python BeautifulSoup 4
+* Python >= 3.x
+* Python 3 BeautifulSoup 4
 
 Install BeautifulSoup
 ---------------------
@@ -92,7 +85,8 @@ Contributions are very welcome!
 2. clone the repo (git clone git@github.com:USERNAME/weeman.git)
 3. make your changes
 4. push the repository
-5. Add yourself in contributors.txt
+5. make a pull request.
+6. Add yourself in contributors.txt
 
 Thank you - and happy contributing!
 
