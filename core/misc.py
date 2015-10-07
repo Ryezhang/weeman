@@ -45,7 +45,7 @@ def print_help():
 def print_help_option(option):
     found = 0
 
-    for opt in help_options.items():
+    for opt in list(help_options.items()):
         if opt[0] == option:
             found = 1
             printt(32, "%s - %s" %(option, opt[1]))
