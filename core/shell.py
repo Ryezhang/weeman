@@ -55,7 +55,7 @@ def shell(quiet_mode):
 
     while True:
         try:
-            an = raw_input(" (weeman ) : ")
+            an = input(" (weeman ) : ")
             prompt = an.split()
             if not prompt:
                 print("Error: What? try help.")
