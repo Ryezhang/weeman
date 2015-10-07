@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 #
 # weeman.py - HTTP server for phishing
 #
@@ -24,10 +24,10 @@ from core.misc import printt
 from core.config import quiet_mode
 
 def tests_pyver():
-    if sys.version[:3] == "2.7" or "2" in sys.version[:3]:
+    if "3" in sys.version[:3]:
         pass # All good
-    elif "3" in sys.version[:3]:
-        printt(1,"Weeman has no support for Python 3.")
+    elif "2" in sys.version[:3]:
+        printt(1,"This is a Python 3 version for weeman.")
     else:
         printt(1, "Your Python version is very old ..")
 
@@ -49,7 +49,7 @@ def main():
     try:
         from bs4 import BeautifulSoup as bs
     except ImportError:
-        printt(1, "Please install beautifulsoup 4 to continue ...")
+        printt(1, "Please install Python 3 beautifulsoup 4 to continue ...")
 
     parser = optparse.OptionParser()
     parser.add_option("-q", "--quiet", 
